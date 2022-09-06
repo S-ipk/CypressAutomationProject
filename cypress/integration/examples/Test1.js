@@ -8,7 +8,8 @@ it('my FirstTest case',function(){
     cy.wait(2000)
     cy.get('.product:visible').should('have.length',4)
     //parent-child chaining
-    cy.get('.products').find('.product').should('have.length',4)
+    cy.get('.products').as('prodoctLocator')
+    cy.get('@prodoctLocator').find('.product').should('have.length',4)
 
     cy.get('.products').find('.product').eq(2).contains('ADD TO CART').click()
 
@@ -22,7 +23,16 @@ it('my FirstTest case',function(){
     }
     })
 
+    cy.get('.brand').then(function(logoelement){
 
+        cy.log(logoelement.text)
+
+
+    })
+
+    const logo = cy.get('.brand')
 
 })
+
+
 })
