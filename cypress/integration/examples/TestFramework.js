@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
- 
+//import HomePage class 
+import HomePage from '../../support/pageObjects/HomePage'
 describe('My Second Test Suite', function() 
 {
 
@@ -16,15 +17,24 @@ describe('My Second Test Suite', function()
  
 it('Handling Dropdowns',function() {
  
- 
+//create object of HomePage class else you cannot use it 
+const homePage=new HomePage()
 
   cy.visit("https://rahulshettyacademy.com/angularpractice/")
 
-  cy.get(':nth-child(1) > .form-control').type(this.data.name)
-  cy.get('select').select(this.data.gender)
+homePage.getEditBox().type(this.data.name)
+homePage.getGender().select(this.data.gender)
+homePage.getTwoWayDataBinding().should('have.value',this.data.name)
+homePage.getEditBox().should('have.attr','minlength','2')
+homePage.getEntrepreneaur().should('be.disabled')
+Cypress.config('defaultCommandTimeout', 8000)
+homePage.getShopTab().click()
 
 
-
+this.data.productName.forEach(function(element) {
+ 
+  cy.selectProduct(element)
+});
 
 
 
