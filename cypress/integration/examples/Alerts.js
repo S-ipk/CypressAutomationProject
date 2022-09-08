@@ -13,7 +13,7 @@ cy.get('[value="Confirm"]').click()
 
 //window:alert
 
-cy.on('window:alert',(str) => {
+cy.on('window:confirm',(str) => {
     
     //Mocha assertion
     expect(str).to.equal('Hello , share this practice page and share your knowledge')
@@ -21,7 +21,16 @@ cy.on('window:alert',(str) => {
 
 })
 
+//Opening new tab 
+cy.get('#opentab').invoke('removeAttr','target').click()
 
+//Verify current url
+cy.url().should('include','qaclickacademy')
+
+
+//navigate back or forward  within browsers 
+
+cy.go('back')
 
 
 
