@@ -1,7 +1,8 @@
 /// <reference types="Cypress" />
-
 //import HomePage class 
-import HomePage from '../../support/pageObjects/HomePage'
+import HomePage from '../pageObject/HomePage'
+import HomePage from '../pageObject/ProductPage'
+
 describe('My Second Test Suite', function() 
 {
 
@@ -19,6 +20,7 @@ it('Handling Dropdowns',function() {
  
 //create object of HomePage class else you cannot use it 
 const homePage=new HomePage()
+const productPage=new productPage()
 
   cy.visit("https://rahulshettyacademy.com/angularpractice/")
 
@@ -35,6 +37,8 @@ this.data.productName.forEach(function(element) {
  
   cy.selectProduct(element)
 });
+
+productPage.checkOutButton().click()
 
 
 
