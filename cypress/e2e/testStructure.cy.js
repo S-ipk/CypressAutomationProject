@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 
-describe('Contect: my First Tests', ()  => {
+describe('Context: my First Tests', ()  => {
 
 
     before(() => {
